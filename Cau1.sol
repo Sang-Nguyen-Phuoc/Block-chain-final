@@ -13,7 +13,20 @@ contract TicTacToe {
          [1, 0, 1]] => true (thắng theo hàng học)
     */
 
-    function isWinning(uint8[3][3] memory board) public pure returns (bool) {
-        // your code here
+     function isWinning(uint8[3][3] memory board) public pure returns (bool) {
+        uint8 center = board[1][1];
+
+        // Check cols and rows
+        if ((board[0][0] == center && center == board[2][2]) || (board[0][2] == center && center == board[2][0]) ||
+            (board[0][1] == center && center == board[2][1]) || (board[1][0] == center && center == board[1][2])) {
+            return true;
+        }
+
+        // Check diagonals
+        if ((board[0][1] == center && center == board[2][1]) || (board[1][0] == center && center == board[1][2])) {
+            return true;
+        }
+
+        return false;
     }
 }
